@@ -1,0 +1,227 @@
+/* General Styles */
+body {
+  font-family: "Google Sans", "Inter", system-ui, -apple-system, "Segoe UI",
+    Roboto, Arial, sans-serif;
+}
+
+h3 {
+  --bs-emphasis-color: #1a1aff;
+  font-weight: 500;
+}
+
+h4 {
+  font-weight: 500;
+}
+
+/* Navigation Bar CSS */
+.navbar {
+  --bs-navbar-color: #fff;
+  --bs-navbar-hover-color: #daff7d;
+  --bs-navbar-active-color: #fff;
+  --bs-navbar-disabled-color: rgba(255, 255, 255, 0.5);
+}
+
+/* White hamburger icon */
+.navbar-dark .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* White border */
+.navbar-toggler {
+  border-color: #fff;
+}
+
+/* Navigation Bar Button CSS */
+.custom-outline {
+  color: #fff;
+  border-color: #fff;
+}
+
+.custom-outline:hover,
+.custom-outline:focus {
+  background-color: #daff7d;
+  color: #1a1aff;
+  border-color: #daff7d;
+}
+
+/* Prevent mobile image from pushing content below the fold */
+.hero-img {
+  max-height: 240px;
+  object-fit: contain;
+}
+
+/* Remove height restriction on desktop */
+@media (min-width: 992px) {
+  .hero-img {
+    max-height: none;
+  }
+}
+
+/* Desktop: normal button behaviour */
+@media (min-width: 768px) {
+  .hero-cta-wrapper {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .hero-cta {
+    width: auto;
+  }
+}
+
+/* Mobile: centered + responsive width */
+@media (max-width: 767.98px) {
+  .hero-cta-wrapper {
+    display: grid;
+    justify-items: center;
+  }
+
+  .hero-cta {
+    width: 100%;
+    max-width: 420px;
+    padding-inline: 1.25rem;
+  }
+}
+
+/* Subtle image fade + slide */
+.hero-animate {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: heroFadeSlide 0.8s ease-out forwards;
+}
+
+@keyframes heroFadeSlide {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Hero section button styling */
+.custom-primary {
+  --bs-btn-bg: #1a1aff;
+  --bs-btn-border-color: #1a1aff;
+  --bs-btn-color: #fff;
+
+  --bs-btn-hover-bg: #daff7d;
+  --bs-btn-hover-border-color: #daff7d;
+  --bs-btn-hover-color: #1a1aff;
+
+  --bs-btn-active-bg: #0000e6;
+  --bs-btn-active-border-color: #0000e6;
+}
+
+/* Software Skills & Education CSS */
+.feature {
+  background-color: #daff7d;
+  border-radius: 8px;
+}
+
+/* Timeline Container */
+.timeline {
+  position: relative;
+  max-width: 70%;
+  margin: 0 auto;
+  left: 200px; /* adjust to center timeline */
+  padding: 30px 40px; /* keep padding inside container */
+  list-style: none;
+  background: rgba(114, 124, 245, 0.06);
+  border-left: 3px solid #1a1aff;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Events */
+.timeline .event {
+  position: relative;
+  padding-left: 30px; /* space for date + dot */
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.12);
+
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.timeline .event:last-of-type {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+/* Date (Left of Line) */
+.timeline .event::before {
+  content: attr(data-date);
+  position: absolute;
+  left: -300px; /* position to the left of the line */
+  top: 0;
+  width: 30%; /* width for long dates */
+  text-align: right;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #6c757d;
+  line-height: 1.4;
+}
+
+/* Dot (On The Line) */
+.timeline .event::after {
+  content: "";
+  position: absolute;
+  left: -46px; /* on the vertical line */
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px #1a1aff;
+}
+
+/* Typography */
+.timeline h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.timeline p {
+  margin-bottom: 0;
+  color: #495057;
+  font-size: 0.95rem;
+}
+
+/* Animation */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Layout */
+@media (max-width: 767px) {
+  .timeline {
+    left: 0;
+    max-width: 100%;
+    padding: 30px 25px;
+    border-left: 3px solid #1a1aff;
+  }
+
+  .timeline .event {
+    padding-left: 0;
+    padding-top: 24px;
+    margin-left: 0;
+  }
+
+  .timeline .event::before {
+    position: static;
+    width: auto;
+    display: block;
+    text-align: left;
+    margin-bottom: 6px;
+  }
+
+  .timeline .event::after {
+    display: none;
+  }
+}
